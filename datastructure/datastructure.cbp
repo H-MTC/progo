@@ -32,10 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="demoClass.cpp" />
-		<Unit filename="learnbook.cpp" />
+		<Unit filename="IntCell.cpp" />
+		<Unit filename="IntCell.h" />
+		<Unit filename="IntPointer.cpp" />
+		<Unit filename="IntPointer.h" />
+		<Unit filename="exceptions.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="notePad.txt" />
+		<Unit filename="simple.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

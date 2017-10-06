@@ -2,3 +2,13 @@
 1507120810 source:d:\mtc\files\myprogram\datastructure\datastructure\democlass.cpp
 	<iostream>
 
+1507280672 source:d:\mtc\files\myedit\datastructure\intcell.cpp
+	"IntCell.h"
+
+1507278540 d:\mtc\files\myedit\datastructure\intcell.h
+
+1507279349 source:d:\mtc\files\myedit\datastructure\main.cpp
+	<iostream>
+	"IntCell.h"
+	<vector>
+
