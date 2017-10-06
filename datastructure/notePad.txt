@@ -1,0 +1,267 @@
+***********************
+This note is the notes of data structure for c0
+2017-10-01
+***********************
+
+Data structure
+  Data type
+    1. primitive data type
+    2. composite data type
+  structure
+    1. linear data structure
+      1> stack
+      2> queue
+    2. nonlinear data structure
+      1> tree
+      2> graph
+      these two data structures should support:
+      adding, deleting, updating, searching, traversing(±éÀú).
+    3. user defined data structure
+    4. storage data structure: dataset with map(pointers) of its item's memory space, the pointers in the map connect data items
+    5. abstract data types(ADT)
+      1> clarify of elements in terms of data types.
+      2> valid operations and parameters to be passed
+      3> error handling
+      4> supports for ADT in high level languages:
+        C: built-in struct type
+        C++: class construct, operations can be implemented by public method.
+        Java: ADT can be expressed as Interface, which includes a series of operations provided by ADT
+      5> advantages: reusable, robust for OOP and software engineering(SE), encapsulation,
+      e.g. stack includes operations that only can be accessed by these interfaces: pop, push, peek, size, isEmpty...
+algorithm
+
+  1. computer algorithms: searching, sorting, compression(for large files), FFT, encoding(for security),
+  geometric(for geometric shapes identification), pattern matching(for comparing images and shapes), parsing(string2int).
+  2. classification of algorithms: iterative algorithms, divide-and-conquer algorithms, greedy algorithms, back-tracking(BFS, BSF)
+  algorithms
+  3. specifications of algorithms: programming language for concrete use
+  4. algorithm analysis(usually done in worst cases): performance in time and space
+    empirical analysis: actual experiment
+    analytical analysis: mathematical analysis
+    time analysis
+    algorithm growth rates: growth-rate functions includes log(N), linear, Nlog(N), N^n, exponential.
+    space analysis
+array: 1,2,3 array.
+
+learn at time of 01-29-30
+ink list: nodes consists link field and info field, whose can be dynamically changed in the heap.
+  basic operation: inserting, deleting, printing, traversing, sorting, searching and size, isEmpty, copy.
+  implementation: pointer method, cursor implementation(uses array to store node data)
+  cursor implementation: uses two arrays to store info field and link field
+  pointer implementation:
+    node class(also in c++): representing the data element
+    interface class: uses the node class to create list and its operations.
+      inserting:
+        at front of list
+        at the end of list
+        at the middle of list
+      deleting: front, middle, end
+      sorting(bulbing), searching.
+    advantages: dynamically changed size, fast pointer operations.
+  variations of link list:
+    circular list, doubly linked list(bi-direction), circular doubly linked list, multi list
+stack: last in first out
+  features: same data type, ordered, not direct access, limited by memory size
+  operations: push, pop; create, destroy stack
+  implementation:
+    array based:
+      ordered in the order of pushing, that is first item is the first array element.
+      uses top count to maintain the stack size, despite whether the popped item exists or not.
+    link based: dynamical link size over array based link, and stack operations are performed on the front of the list.
+  applications:
+    translating and computing high-level languages
+    implementing recursive operations
+    implementing search and traversal operations
+    parentheses matching
+    prefix and postfix notations(math operations)
+    function calls: push the current directive address and var value before call function in stack frames,
+    also in calling nested functions
+    recursive procedures: get the value of 4! for example.
+    application uses: undo, redo of edit, record the previously visited pages.
+    hardware architecture implementation.
+
+learn at time: 02-52-33
+
+queue: first in first out, pay attention to the order and underflow, overflow features compared with stack
+  implementation: array and linked list.
+    array: uses front and rear label to maintain the queue position in the array(like scroll bar).
+    and once the scroll position shift to the right, no item will be added to the queue, one solution is to shift the queue
+    to the most left, but this operation is time consuming when the queue is large. a good solution is circular queue.
+    linked list: attention on the circular queue's overflow and underflow.
+     priority queue:
+       data fields with priority in list, the newly added position in queue is based on the priority of the
+       new added item. applications of priority queue: CPU processes scheduling, preemptive multitasking, threads in JAVA
+       implementation: array, list, heap(most efficient)
+     double-ended queue(Deque):
+       add and remove operation can be done at both ends.
+       perform as the role of stack and queue.
+tree: data structure whose elements have hierarchical relationship by using nodes, which are connected together with edges
+also called paths.
+  root node: provides entry point.
+  definitions and terminology: parent node, child node, siblings(multiple), ancestors, descendants, tree level(root node is level 0)
+  tree height(maximum levels number).
+  features: non-linear, unique path to particular node(otherwise the data structure is graph);
+  unique parent for every node(except the root node).
+  forest: a set of independent tree.
+  classification: based on maximum child permissible to be added to parent node.
+  multi-way tree: contains nodes in specific order, nodes contains set of keys which determine range of values held by child
+  nodes(for searching).
+    frequently used in modern database management systems. in order to improve the search performance, tree height is kept to minimum by
+    balancing the levels of subtrees, which is called balance trees(B-tree). in addition, B+-tree: whose leaves are linked
+    by pointer to facilitate sequential searching.
+  variation:
+   ordered tree: key in left is less than the right.
+   expression tree
+   heap: used in queue and sorting
+   binary decision tree: array, list, traverse(pre-order, in-order, post-order, also stack based traversal for recording
+   the right node pointer)
+   binary search tree: insertion or searching is operated according to key rule that left is less than right.
+
+searching and sorting:
+  sorting:
+    bubble sort, O(N^2)
+    selection sort, O(N^2)
+    insertion sort, O(N^2)
+    shell sort, O(N^7/6&N^3/2, worst situation)
+    quick sort, O(Nlog(N), N^2), large heap
+    heap sort, O(Nlog(N)), better than quick sort
+    merge sort, (Nlog(N)), O(N) auxiliary space
+    radix sort, O(N), O(R*S*N) auxiliary space
+    external sorting: sort data on tapes, disks and diskettes
+    e.g. mapping array into a binary tree, converting binary tree into heap.
+  searching:
+    binary search: can be performed if an array is in sorted order, more like two division method.
+    linear search: search random arranged items, compare with each the key of item. if the searched array is randomly distributed,
+    linear search is the only viable option.
+
+
+learn at time: 05-34-50
+
+graphs
+  symbol representation: G = {V, E}, V = {v1, v2, v3, ... vn}, E = {(v1, v2), (v1, v3), ...}.
+  diagram representation: ...
+  classification: undirected, directed, weighted, multi graph.
+    undirected graph: edges without direction, it has N(N - 1)/2 edges for N vertexes(points). edge between V, U can be represented
+    as (V, U) or (U, V)
+    directed graph: <U, V> means an edge from vertex U to V, also called digraph or network.
+    weighted graph: edges with data values(weights), which can be directed or undirected.
+      weight can be:
+        cost of transportation between two locations
+        amount of data traffic between workstations in a network
+        distance between two cities
+    multi graph: a generalization(the abstract of concepts) of directed graph
+    graph path: edges between two vertex, length of path is number of edges
+    adjacent vertexes(neighbor), reachable(if there exists any directed path between two vertexes)
+    loops and cycles:
+      loop: edge that begins and terminates at the same vertex
+      cycle: edges cycle among several vertexes.
+    simple path: no repeated vertex in a path
+    elementary: allow repeated vertexes in a path
+    graph connectedness: a graph is connected if there exist paths for all pairs of vertexes, noticing that undirected graph is
+    easy to get the property of connectedness.
+    weakly connected graph: whose number of unreachable vertexes is greater than one in directed graph.
+    unilaterally connected: e.g., A is reachable from B, but B is not reachable form A, for any pair of vertexes.
+    strongly connected:  both vertexes are reachable from each other
+
+    degree of vertex: the number of edges that connect one vertex to another vertex(or itself)
+     indeg<V>: number of edges terminates at vertex V
+     outdeg<V>: number of edges for originates from vertex V
+
+    applications of graph:
+      one-to-one, one-to-many, many-to-one, many-to-many.
+      e.g. computer networks, electrical circuits, transport networks, assembly lines, molecular structures and databases.
+
+    operations on graphs:
+      inserting a new vertex
+      removing vertex
+      inserting a new edge
+      remove edge
+      determine degree of a vertex
+      determine reachability of a vertex
+      finds paths between a given pair of vertexes
+      determine the shortest path
+      traversing a graph
+
+    matrix representation of graph:
+      graphical representation is not useful for analytical studies of a graph, so alternatives are:
+        matrix representation and linked list representation depending on the density of graph edges.
+
+        matrix representation, edges are represented as elements of matrix called adjacency matrix, whose rows and columns are
+        labeled by graph vertexes, if an edge exists, corresponding row and column contain 1, and 0 otherwise. adjacency matrix
+        contains boolean value of edges are called boolean matrix or bit matrix, and adjacency matrix with weights is called
+        weight matrix. and the insert and delete operation is costing and space costing for 0 value.
+
+        array based graphs: two dimensional array to store elements(edges) of adjacency matrix and one dimensional array to
+        contain info in vertexes.
+
+    path lengths in a graph: we can find paths of different lengths via adjacency matrix by using the A^n, where A is the adjacency
+    matrix.
+
+    path matrix: similar to adjacency matrix, but elements are decided by whether there exists a path between vertexes or not, despite
+    the path length. M = A + A^2 + A^3+ ..., where M is the path matrix and A is the adjacency matrix. and in strongly connected
+    graph, path matrix does not contain any zeros.
+
+    Warshall's algorithm for path matrix: is a more efficient way to compute the path matrix compared with the operation of A^n,
+    which is Pij = Pij || (Pik && Pkj), based on boolean value in adjacency matrix.
+
+    shortest path matrix: weights are compared in the process of Warshall's algorithm, and store the smallest sum in matrix during
+    every iteration.
+
+    traversing graphs:
+    implementation: recursive or iterative procedure
+      iterative: use auxiliary data structure to temporarily store the vertex address during traversal such as stack or queue.
+      DFS(depth-first-search): process one, stack its neighbors, until all vertexes address popped out. for visit order
+      first deep down to the bottom, then process all levels
+      BFS(breadth-first-search): for visit order, first process level items, then go deep down.
+    spanning trees: subgraph which includes all vertexes but no cycles, which can be created by DFS or BFS.
+    minimum spanning trees(MST): with least possible summation of all edges.
+      applications:
+        telephone network minimum construction
+        linking of group of islands connected with bridges so that the the total bridge spans is minimum.
+        MSTs can be used to determine air routes, with least travel time or lowest travel cost.
+        algorithms for the problems above like,
+          Kruskal's algorithm
+          Prim's algorithm
+          DijKstra's algorithm: generates trace of shortest path
+    topological sorting: directed graph without cycles is arranged according special order.
+      e.g. course design planing, scheduling of tasks in an assembly line
+
+c++ basics
+
+ (int)double, (float)(3/4), enum list{value1=12, value2(=13), value3}
+ struct student
+ {
+   int num;
+   char name[20];
+   char label[10];
+   double score;
+ }stu1={100, "jack", "good", 34.8};  student stu2 = {101, "tom", "pretty", 78.9};  stu2.name
+
+ value pass and ref pass: value pass do not change original value, ref pass changes original value
+ inline type function(){}: executes faster than ordinary functions, functions in classes is inline function by default. But its size must
+ not be large.
+
+ functions can be nested in each other
+
+ functions can be overloaded: functions have same name but different number and type of variables
+
+ <cstdlib>, <cmath>, modf(separate int and fraction part of float), sqrt, rand, difftime(time(NULL), time(NULL))(calculate time span)
+
+ learn at 4-1 in the collected blog
+
+ get to knowing the call principle of inline function
+
+ learn at 6-1
+
+
+
+
+
+
+
+
+
+
+
+
+
