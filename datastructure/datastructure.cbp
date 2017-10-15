@@ -32,10 +32,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="IntCell.cpp" />
-		<Unit filename="IntCell.h" />
-		<Unit filename="IntPointer.cpp" />
-		<Unit filename="IntPointer.h" />
+		<Unit filename="Array.h" />
+		<Unit filename="BSTree.h" />
+		<Unit filename="DList.h" />
+		<Unit filename="GraphList.h" />
+		<Unit filename="GraphMatrix.h" />
+		<Unit filename="List.h" />
+		<Unit filename="MemoryCell.h" />
+		<Unit filename="Queue.h" />
+		<Unit filename="Stack.h" />
+		<Unit filename="String.h" />
 		<Unit filename="exceptions.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="notePad.txt" />

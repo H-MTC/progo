@@ -7,8 +7,36 @@
 
 1507278540 d:\mtc\files\myedit\datastructure\intcell.h
 
-1507279349 source:d:\mtc\files\myedit\datastructure\main.cpp
+1507726547 source:d:\mtc\files\myedit\datastructure\main.cpp
 	<iostream>
-	"IntCell.h"
-	<vector>
+	"DList.h"
+
+1507375531 d:\mtc\files\myedit\datastructure\array.h
+	<iostream>
+	<cstring>
+	<cstdlib>
+
+1507454556 d:\mtc\files\myedit\datastructure\string.h
+	<iostream>
+	<cstring>
+	<cstdlib>
+
+1507465224 d:\mtc\files\myedit\datastructure\list.h
+	<cstdio>
+	<cstdlib>
+	<list>
+	<cassert>
+	<iostream>
+
+1507721722 d:\mtc\files\myedit\datastructure\queue.h
+	<cstdio>
+	<cassert>
+	<iostream>
+	<cstdlib>
+
+1507726800 d:\mtc\files\myedit\datastructure\dlist.h
+	<cstdio>
+	<cassert>
+	<iostream>
+	<cstdlib>
 
