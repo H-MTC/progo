@@ -20,6 +20,7 @@ class BSTree
         ~BSTree();
 
         void Insert(int x);
+        void Remove(int x);
         unsigned short Size();
         unsigned short Deep();
         unsigned short Leaf();
@@ -31,6 +32,7 @@ class BSTree
         void DepthFirstSearch();
         void BreadthFirstSearch();
     private:
+        void Remove(int x, Node** pNode);
         unsigned short CountSize(Node* n);
         unsigned short CountDeep(Node* n);
         unsigned short CountLeaf(Node* n);
@@ -46,6 +48,28 @@ class BSTree
         Node* m_root;
 };
 
+void BSTree::Remove(int x, Node** pNode)
+{
+    if(!pNode || !(*pNode)){return;}
+    if(x < (*pNode)->data){Remove(x, &((*pNode)->lchild));}
+    else if(x > (*pNode)->data){Remove(x, &((*pNode)->rchild));}
+    else if((*pNode)->lchild && (*pNode)->rchild)
+    {
+        Node* min = (*pNode)->rchild;
+        while(min->lchild){min = min->lchild;}
+        (*pNode)->data = min->data;
+        Remove((*pNode)->data, &((*pNode)->rchild));
+    }
+    else
+    {
+        Node* tmp = *pNode;
+        if((*pNode)->lchild){(*pNode) = (*pNode)->lchild;}
+        else if((*pNode)->rchild){(*pNode) = (*pNode)->rchild;}
+        else{*pNode = NULL;}
+        delete tmp;
+        tmp = NULL;
+    }
+}
 unsigned short BSTree::CountSize(Node* n)
 {
     if(!n){return 0;}
@@ -165,7 +189,11 @@ void BSTree::Insert(int x)
         (x < pre->data)?(pre->lchild = tmp):(pre->rchild = tmp);
     }
 }
-
+void BSTree::Remove(int x)
+{
+    if(!m_root){return;}
+    Remove(x, &m_root);
+}
 unsigned short BSTree::Size()
 {
     return CountSize(m_root);
@@ -227,6 +255,15 @@ void test()
 
     tree.DepthFirstSearch();
     tree.BreadthFirstSearch();
+
+    tree.Remove(4);
+    tree.PreorderTraversal();
+
+    tree.Remove(1);
+    tree.PreorderTraversal();
+
+    tree.Remove(10);
+    tree.PreorderTraversal();
 
     cout<<"Size: "<<tree.Size()<<endl;
     cout<<"Depth: "<<tree.Deep()<<endl;

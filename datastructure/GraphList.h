@@ -1,6 +1,8 @@
 #include<iostream>
 #include<cstdio>
 #include<cstdlib>
+#include<stack>
+#include<queue>
 
 using namespace std;
 
@@ -14,6 +16,8 @@ struct Edge
 struct Vertex
 {
     int vName;
+    int in;
+    int out;
     Edge* next;
 };
 
@@ -23,6 +27,7 @@ class GraphList
         ~GraphList();
         void createGraph();
         void printGraph();
+        bool topSortInDegree();
     private:
         void inputVertexCount();
         void makeVertexArray();
@@ -62,7 +67,13 @@ void GraphList::inputVertexCount()
 void GraphList::makeVertexArray()
 {
     m_vVertex = new Vertex[m_vCount];
-    for(int i = 0; i < m_vCount; ++i){m_vVertex[i].vName = i; m_vVertex[i].next = NULL;}
+    for(int i = 0; i < m_vCount; ++i)
+    {
+        m_vVertex[i].vName = i;
+        m_vVertex[i].next = NULL;
+        m_vVertex[i].in = 0;
+        m_vVertex[i].out = 0;
+    }
 }
 
 void GraphList::inputEdgeCount()
@@ -98,6 +109,8 @@ void GraphList::addEdgeToList(int vFrom, int weight, int vTo)
         tmp->next = edge;
     }
     else{m_vVertex[vFrom].next = edge;}
+    ++m_vVertex[vTo].in;
+    ++m_vVertex[vFrom].out;
 }
 
 void GraphList::printGraph()
@@ -105,10 +118,10 @@ void GraphList::printGraph()
     for(int i = 0; i < m_vCount; ++i)
     {
         Edge* tmp = m_vVertex[i].next;
-        cout<<"List:"<<m_vVertex[i].vName<<"->";
+        cout<<"List:"<<m_vVertex[i].vName<<"(in: "<<m_vVertex[i].in<<")"<<"->";
         while(tmp)
         {
-            cout<<"("<<tmp->weight<<")";
+            cout<<"(weight: "<<tmp->weight<<")";
             cout<<tmp->vName;
             tmp = tmp->next;
         }
@@ -116,6 +129,43 @@ void GraphList::printGraph()
     }
 }
 
+bool GraphList::topSortInDegree()
+{
+    stack<Vertex*> vertexStack;
+    queue<Vertex*> vertexQueue;
+    int* degree = new int[m_vCount];
+    for(int i = 0; i < m_vCount; ++i)
+    {
+        degree[i] = m_vVertex[i].in;
+        if(!degree[i]){vertexStack.push(&m_vVertex[i]);}
+    }
+    int count = 0;
+    while(!vertexStack.empty())
+    {
+        Vertex* tmp = vertexStack.top();
+        vertexStack.pop();
+        vertexQueue.push(tmp);
+        ++count;
+        Edge* edge = tmp->next;
+        while(edge)
+        {
+            Vertex* vertex = &m_vVertex[edge->vName];
+            --degree[edge->vName];
+            if(!degree[edge->vName]){vertexStack.push(vertex);}
+            edge = edge->next;
+        }
+    }
+    if(count < m_vCount){return false;}
+    while(!vertexQueue.empty())
+    {
+        Vertex* tmp = vertexQueue.front();
+        vertexQueue.pop();
+        cout<<tmp->vName<<" ";
+    }
+    cout<<endl;
+    delete[] degree;
+    return true;
+}
 void GraphList::createGraph()
 {
     inputVertexCount();
@@ -129,6 +179,8 @@ void test()
     GraphList graph;
     graph.createGraph();
     graph.printGraph();
+    cout<<"Top sort output: "<<endl;
+    graph.topSortInDegree();
     system("pause");
 }
 

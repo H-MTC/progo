@@ -7,9 +7,9 @@
 
 1507278540 d:\mtc\files\myedit\datastructure\intcell.h
 
-1507726547 source:d:\mtc\files\myedit\datastructure\main.cpp
+1508144954 source:d:\mtc\files\myedit\datastructure\main.cpp
 	<iostream>
-	"DList.h"
+	"BSTree.h"
 
 1507375531 d:\mtc\files\myedit\datastructure\array.h
 	<iostream>
@@ -39,4 +39,23 @@
 	<cassert>
 	<iostream>
 	<cstdlib>
+
+1507970372 d:\mtc\files\myedit\datastructure\graphmatrix.h
+	<iostream>
+	<cstdlib>
+	<iomanip>
+
+1508142632 d:\mtc\files\myedit\datastructure\graphlist.h
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<stack>
+	<queue>
+
+1508145519 d:\mtc\files\myedit\datastructure\bstree.h
+	<cstdio>
+	<cstdlib>
+	<iostream>
+	<stack>
+	<queue>
 
